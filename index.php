@@ -43,7 +43,7 @@
 
            }
 
-             $get_adverts = "select * from adverts LIMIT 1,3";
+             $get_adverts = "select * from adverts LIMIT 1,4";
 
              $run_adverts = mysqli_query($con,$get_adverts);
 
