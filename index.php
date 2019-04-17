@@ -1,150 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=devise-width, initial-scale=1">
-    <title>SEPEcw</title>
-    <link rel="stylesheet" href="styles/bootstrap-337.min.css">
-    <link rel="stylesheet" href="font-awsome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="styles/style.css">
-  </head>
-  <body>
+<?php
 
-    <div id="top"><!-- top Begin -->
-       <div class="container"> <!-- container Begin -->
-         <div class="col-md-6 offer"><!-- col-md-6 offer Begin -->
-
-       <a href="#" class="btn btn-success btn-sm">Welcome</a>
-       <a href="checkout.php">4 items in Your Cart | Total Price: $300</a>
-
-         </div><!-- col-md-6 offer Finish -->
-
-           <div class="col-md-6"><!-- col-md-6 Begin -->
-             <ul class="menu"><!-- menu Begin -->
-               <li>
-                 <a href="customer_register.php">Register</a>
-               </li>
-               <li>
-                 <a href="checkout.php">My Account</a>
-               </li>
-               <li>
-                 <a href="cart.php">Go To Cart</a>
-               </li>
-
-               <li>
-                 <a href="checkout.php">Login</a>
-               </li>
-             </ul><!-- menu Finish -->
-           </div><!-- col-md-6 Finish -->
-
-       </div> <!-- container Finish -->
-    </div> <!-- top Finish -->
-
-<div id="navbar" class="navbar navbar-default"><!-- navbar navbar-default  Begin -->
-  <div class="container"><!-- container  Begin -->
-      <div class="navbar-header"><!-- navbar-header  Begin -->
-          <a href="index.php" class="navbar-brand home"> <!-- navbar-brand home  Begin -->
-              <img src="images/e-comm-logo.PNG" alt="SEPEcw Logo" class="hidden-xs">
-              <img src="images/e-comm-mob-logo.PNG" alt="SEPEcw Logo Mobile" class="visible-xs">
-
-          </a><!-- navbar-brand home  Finish-->
-          <button class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
-             <span class="sr-only">Toggle navigation</span>
-             <i class="fa fa-align-justify"></i>
-
-            </button>
-
-            <button class="navbar-toggle" data-toggle="collapse" data-target="#search">
-               <span class="sr-only">Toggle Search</span>
-               <i class="fa fa-search"></i>
-
-              </button>
-      </div><!-- navbar-header  Finish -->
-
-      <div class="navbar-collapse collapse" id="navigation"><!-- navbar-collapse collapse  beggin-->
-          <div class="padding-nav"> <!-- padding-nav  Begin -->
-
-            <ul class="nav navbar-nav left"> <!-- nav navbar-nav left  Begin -->
-               <li class="active">
-                   <a href="index.php">Home</a>
-               </li>
-               <li>
-                  <a href="shop.php">Shop</a>
-               </li>
-               <li>
-                 <a href="checkout.php">My Account</a>
-               </li>
-               <li>
-                  <a href="cart.php">Shopping Cart</a>
-               </li>
-
-               <li>
-                 <a href="contact.php">Contact Us</a>
-               </li>
-            </ul><!-- nav navbar-nav left  Finish -->
-          </div><!-- padding-nav  Finish -->
-
-               <a href="cart.php" class="btn navbar-btn btn-primary right"><!-- btn navbar-btn btn-primary right Begin -->
-                  <i class="fa fa-shopping-cart"></i>
-                  <span>4 Items In Your Cart</span>
-
-               </a><!-- btn navbar-btn btn-primary right  Finish -->
-
-               <div class="navbar-collapse collapse right"><!-- navbar-collapse collapse right Begin -->
-
-                    <button class="btn btn-primary navbar-btn" type="button" data-toggle="collapse" data-target="#search"><!-- btn btn-primary navbar-btn Begin -->
-
-                        <span class="sr-only">Toggle Search</span>
-                        <i class="fa fa-search"></i>
-                    </button><!-- btn btn-primary navbar-btn Finish -->
-
-               </div><!-- navbar-collapse collapse right Finish -->
-
-
-
-
-
-
-
-
-
-            <div class="collapse clearfix" id="Search"><!-- collapse clearfix Begin --><!-- Class "collapse clearfix"to be double checked --->
-
-                    <form method="get" action="results.php" class="navbar-form"><!-- navbar-form  Begin -->
-
-                       <div class="input-group"><!-- input-group  Begin -->
-
-                            <input type="text" class="form-control" placeholder="Search" name="user_query" required>
-
-                            <span class="input-group-btn"><!-- input-group-btn  Begin -->
-
-                           <button type="submit" name="search" value="Search" class="btn btn-primary"><!-- btn btn-primary  Begin -->
-
-                              <i class="fa fa-search"></i>
-
-                           </button><!-- btn btn-primary  Finish-->
-
-                           </span><!-- input-group-btn   Finish -->
-
-                       </div><!-- input-group  Finish -->
-
-                    </form><!-- navbar-form  Finish -->
-
-                  </div><!-- collapse clearfix  Finish --> <!-- Class "collapse clearfix"to be double checked --->
-
-
-
-
-
-
-
-
-
-      </div><!-- navbar-collapse collapse  Finish -->
-
-  </div><!-- container  Finish -->
-
-</div><!-- navbar navbar-default Finish -->
+    $active='Home';
+    include("includes/header.php");
+ ?>
 
 <div class="container" id="slider"><!-- container Begin-->
 
@@ -163,29 +21,50 @@
 
           <div class="carousel-inner"><!-- carousel-inner Begin-->
 
-              <div class="item active">
+         <?php
 
-                <img src="admin_area/slides_images/slide-1.jpg" alt="Slider Image 1">
+           $get_adverts = "select * from adverts LIMIT 0,1";
 
-              </div>
+           $run_adverts = mysqli_query($con,$get_adverts);
 
-              <div class="item">
+           while($row_adverts=mysqli_fetch_array($run_adverts))
 
-                <img src="admin_area/slides_images/slide-2.jpg" alt="Slider Image 2">
+           {
+            $adverts_name = $row_adverts['adverts_name'];
+            $adverts_image = $row_adverts['adverts_image'];
 
-              </div>
+            echo "
+                <div class='item active'>
 
-              <div class="item">
+                <img src='admin_area/slides_images/$adverts_image'>
 
-                <img src="admin_area/slides_images/slide-3.jpg" alt="Slider Image 3">
+                </div>
+            ";
 
-              </div>
+           }
 
-              <div class="item">
+             $get_adverts = "select * from adverts LIMIT 1,3";
 
-                <img src="admin_area/slides_images/slide-4.jpg" alt="Slider Image 4">
+             $run_adverts = mysqli_query($con,$get_adverts);
 
-              </div>
+             while($row_adverts=mysqli_fetch_array($run_adverts))
+
+             {
+              $adverts_name = $row_adverts['adverts_name'];
+              $adverts_image = $row_adverts['adverts_image'];
+
+              echo "
+                  <div class='item '>
+
+                  <img src='admin_area/slides_images/$adverts_image'>
+
+                  </div>
+              ";
+
+             }
+
+
+          ?>
 
           </div><!-- carousel-inner Finish-->
 
@@ -279,203 +158,15 @@
 
 </div><!-- hot Finish -->
 
-<div id="containt" class="container"><!-- container Begin -->
+<div id="content" class="container"><!-- container Begin -->
+
   <div class="row"><!-- row Begin -->
 
+<?php
 
-    <div class="col-sm-4 col-sm-6 single"><!-- col-sm-4 col-sm-6 single Begin -->
-      <div class="product"><!-- product Begin -->
-        <a href="details.php">
-          <img class="img-responsive"src="admin_area/product_images/Prod-1.jpg" alt="Product1">
-        </a>
+   getPro();
 
-        <div class="text"><!--text Begin -->
-
-          <h3>
-              <a href="details.php"> Ford Rangers Car</a>
-          </h3>
-
-          <p class="price">$30,000</p>
-          <p class="button">
-
-             <a href="details.php" class="btn btn-default">View details</a>
-
-             <a href="details.php" class="btn btn-primary">
-
-                 <i class="fa fa-shopping-cart">
-                      Add To Cart
-                 </i>
-             </a>
-
-          </p>
-
-        </div><!-- text Finish-->
-
-      </div><!-- product Finish -->
-
-    </div><!-- col-sm-4 col-sm-6 single Finish-->
-
-    <div class="col-sm-4 col-sm-6 single"><!-- col-sm-4 col-sm-6 single Begin -->
-      <div class="product"><!-- product Begin -->
-        <a href="details.php">
-          <img class="img-responsive"src="admin_area/product_images/Prod-2.jpg" alt="Product2">
-        </a>
-
-        <div class="text"><!--text Begin -->
-
-          <h3>
-              <a href="details.php"> Audi Car</a>
-          </h3>
-
-          <p class="price">$20,000</p>
-          <p class="button">
-
-             <a href="details.php" class="btn btn-default">View details</a>
-
-             <a href="details.php" class="btn btn-primary">
-
-                 <i class="fa fa-shopping-cart">
-                      Add To Cart
-                 </i>
-             </a>
-
-          </p>
-
-        </div><!-- text Finish-->
-
-      </div><!-- product Finish -->
-
-    </div><!-- col-sm-4 col-sm-6 single Finish-->
-
-    <div class="col-sm-4 col-sm-6 single"><!-- col-sm-4 col-sm-6 single Begin -->
-      <div class="product"><!-- product Begin -->
-        <a href="details.php">
-          <img class="img-responsive"src="admin_area/product_images/Prod-3.jpg" alt="Product3">
-        </a>
-
-        <div class="text"><!--text Begin -->
-
-          <h3>
-              <a href="details.php"> Audi Car</a>
-          </h3>
-
-          <p class="price">$15,000</p>
-          <p class="button">
-
-             <a href="details.php" class="btn btn-default">View details</a>
-
-             <a href="details.php" class="btn btn-primary">
-
-                 <i class="fa fa-shopping-cart">
-                      Add To Cart
-                 </i>
-             </a>
-
-          </p>
-
-        </div><!-- text Finish-->
-
-      </div><!-- product Finish -->
-
-    </div><!-- col-sm-4 col-sm-6 single Finish-->
-
-    <div class="col-sm-4 col-sm-6 single"><!-- col-sm-4 col-sm-6 single Begin -->
-      <div class="product"><!-- product Begin -->
-        <a href="details.php">
-          <img class="img-responsive"src="admin_area/product_images/Prod-4.jpg" alt="Product4">
-        </a>
-
-        <div class="text"><!--text Begin -->
-
-          <h3>
-              <a href="details.php"> Audi Car</a>
-          </h3>
-
-          <p class="price">$25,000</p>
-          <p class="button">
-
-             <a href="details.php" class="btn btn-default">View details</a>
-
-             <a href="details.php" class="btn btn-primary">
-
-                 <i class="fa fa-shopping-cart">
-                      Add To Cart
-                 </i>
-             </a>
-
-          </p>
-
-        </div><!-- text Finish-->
-
-      </div><!-- product Finish -->
-
-    </div><!-- col-sm-4 col-sm-6 single Finish-->
-
-    <div class="col-sm-4 col-sm-6 single"><!-- col-sm-4 col-sm-6 single Begin -->
-      <div class="product"><!-- product Begin -->
-        <a href="details.php">
-          <img class="img-responsive"src="admin_area/product_images/Prod-4.jpg" alt="Product4">
-        </a>
-
-        <div class="text"><!--text Begin -->
-
-          <h3>
-              <a href="details.php"> Audi Car</a>
-          </h3>
-
-          <p class="price">$25,000</p>
-          <p class="button">
-
-             <a href="details.php" class="btn btn-default">View details</a>
-
-             <a href="details.php" class="btn btn-primary">
-
-                 <i class="fa fa-shopping-cart">
-                      Add To Cart
-                 </i>
-             </a>
-
-          </p>
-
-        </div><!-- text Finish-->
-
-      </div><!-- product Finish -->
-
-    </div><!-- col-sm-4 col-sm-6 single Finish-->
-
-    <div class="col-sm-4 col-sm-6 single"><!-- col-sm-4 col-sm-6 single Begin -->
-      <div class="product"><!-- product Begin -->
-        <a href="details.php">
-          <img class="img-responsive"src="admin_area/product_images/Prod-3.jpg" alt="Product3">
-        </a>
-
-        <div class="text"><!--text Begin -->
-
-          <h3>
-              <a href="details.php"> Audi Car</a>
-          </h3>
-
-          <p class="price">$15,000</p>
-          <p class="button">
-
-             <a href="details.php" class="btn btn-default">View details</a>
-
-             <a href="details.php" class="btn btn-primary">
-
-                 <i class="fa fa-shopping-cart">
-                      Add To Cart
-                 </i>
-             </a>
-
-          </p>
-
-        </div><!-- text Finish-->
-
-      </div><!-- product Finish -->
-
-    </div><!-- col-sm-4 col-sm-6 single Finish-->
-
-
+ ?>
 
 
   </div><!-- row Finish -->
