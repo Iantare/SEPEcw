@@ -100,7 +100,7 @@
           </div><!-- icon Finish -->
           <h3><a href="#">Best Offer</a></h3>
 
-          <p>We are All You Need bjbjsfjbjfbkersjbgjejgjg </p>
+          <p>We have best of the best ever!! You are welcome to Good Cars ltd online shop </p>
         </div><!-- box-same-height Finish -->
 
       </div><!-- col-sm-4 Finish -->
@@ -114,7 +114,7 @@
           </div><!-- icon Finish -->
           <h3><a href="#">Best Price</a></h3>
 
-          <p>We are the cheapest and Qualified We are All You Need</p>
+          <p>We are the cheapest and Qualified We are All You Need!! at Good Cars ltd client is a King</p>
         </div><!-- box-same-height Finish -->
 
       </div><!-- col-sm-4 Finish -->
@@ -128,7 +128,7 @@
           <h3><a href="#">Original Brand Mark</a></h3>
 
           <p>We are the qualified resaler of Original Trade mark
-            We are All You Need </p>
+            at Good Cars ltd quality is our high priority </p>
         </div><!-- box-same-height Finish -->
 
       </div><!-- col-sm-4 Finish -->
