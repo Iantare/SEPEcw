@@ -1,0 +1,281 @@
+<?php
+
+if(!isset($_SESSION['admin_email'])){
+
+    echo "<script>window.open('login.php','_self')</script>";
+
+}else{
+
+
+ ?>
+
+<!DOCTYPE html>
+<html lang="en"
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=devise-width, initial-scale=1">
+    <title>Insert Products</title>
+
+  </head>
+  <body>
+
+<div class="row"><!-- row Begin --->
+
+    <div class="col-lg-12"><!-- col-lg-12 Begin --->
+
+      <ol class="breadcrumb"><!-- breadcrumb Begin --->
+
+         <li class="active"><!-- active Begin --->
+
+              <i class="fa fa-dashboard"></i> Dashboard / Insert Products
+
+         </li><!-- active Finish --->
+
+      </ol><!-- breadcrumb Finish --->
+
+    </div><!-- col-lg-12 Finish --->
+
+</div><!-- row Finish --->
+
+<div class="row"><!-- row Begin --->
+
+  <div class="col-lg-12"><!-- col-lg-12 Begin --->
+
+       <div class="panel panel-default"><!--panel panel-default Begin --->
+
+           <div class="panel-heading"><!--panel-heading Begin --->
+
+             <h3 class="panel-title"><!--panel-title Begin --->
+
+                  <i class="fa fa-money fa-fw"></i> Insert Product
+
+             </h3><!--panel-title Finish --->
+
+           </div><!--panel-heading Finish --->
+
+           <div class="panel-body"><!--panel-body Begin --->
+
+             <form method="post" class="form-horizontal" enctype="multipart/form-data"><!--form-horizontal Begin --->
+
+                 <div class="form-group"><!--form-group Begin --->
+
+                   <label class="col-md-3 control-label"> Product Title </label>
+
+                   <div class="col-md-6"><!--col-md-6 Begin --->
+
+                      <input name="Prod_Title" type="text" class="form-control" required>
+
+                   </div><!--col-md-6 Finish --->
+
+                 </div><!--form-group Finish --->
+
+
+
+                 <div class="form-group"><!--form-group Begin --->
+
+                   <label class="col-md-3 control-label"> Product Category </label>
+
+                   <div class="col-md-6"><!--col-md-6 Begin --->
+
+                    <select name="product_cat" class="form-control"><!--form-control Begin --->
+
+                         <option>select a Category Product</option>
+
+                          <?php
+
+                          $get_p_cats = "SELECT * FROM products_categories";
+
+                          $run_p_cats = mysqli_query($con,$get_p_cats);
+
+                            while ($row_p_cats=mysqli_fetch_array($run_p_cats)){
+                                $Prod_cat_id = $row_p_cats['Prod_cat_id'];
+                                $Prod_Cat_Title = $row_p_cats['Prod_Cat_Title'];
+
+                                echo "<option value='$Prod_cat_id'> $Prod_Cat_Title </option>";
+
+                            }
+
+                          ?>
+
+                    </select><!--form-control Finish --->
+
+                   </div><!--col-md-6 Finish --->
+
+                 </div><!--form-group Finish --->
+
+
+                 <div class="form-group"><!--form-group Begin --->
+
+                   <label class="col-md-3 control-label"> Category </label>
+
+                   <div class="col-md-6"><!--col-md-6 Begin --->
+
+                    <select name="cat" class="form-control"><!--form-control Begin --->
+
+                         <option>select a Category</option>
+
+                          <?php
+
+                          $get_cat = "SELECT * FROM categories";
+
+                          $run_cat = mysqli_query($con,$get_cat);
+
+                            while ($row_cat=mysqli_fetch_array($run_cat)){
+                                $Cat_id = $row_cat['Cat_id'];
+                                $Cat_Title = $row_cat['Cat_Title'];
+
+                                echo "<option value='$Cat_id'> $Cat_Title </option>";
+
+                            }
+
+                          ?>
+
+                    </select><!--form-control Finish --->
+
+                   </div><!--col-md-6 Finish --->
+
+                 </div><!--form-group Finish --->
+
+
+                 <div class="form-group"><!--form-group Begin --->
+
+                   <label class="col-md-3 control-label"> Product Image 1</label>
+
+                   <div class="col-md-6"><!--col-md-6 Begin --->
+
+                      <input name="product_img1" type="file" class="form-control" required>
+
+                   </div><!--col-md-6 Finish --->
+
+                 </div><!--form-group Finish --->
+
+
+                 <div class="form-group"><!--form-group Begin --->
+
+                   <label class="col-md-3 control-label"> Product Image 2</label>
+
+                   <div class="col-md-6"><!--col-md-6 Begin --->
+
+                      <input name="product_img2" type="file" class="form-control">
+
+                   </div><!--col-md-6 Finish --->
+
+                 </div><!--form-group Finish --->
+
+
+                 <div class="form-group"><!--form-group Begin --->
+
+                   <label class="col-md-3 control-label"> Product Image 3</label>
+
+                   <div class="col-md-6"><!--col-md-6 Begin --->
+
+                      <input name="product_img3" type="file" class="form-control form-height-custom">
+
+                   </div><!--col-md-6 Finish --->
+
+                 </div><!--form-group Finish --->
+
+
+                 <div class="form-group"><!--form-group Begin --->
+
+                   <label class="col-md-3 control-label"> Product Price</label>
+
+                   <div class="col-md-6"><!--col-md-6 Begin --->
+
+                      <input name="Prod_price" type="text" class="form-control" required>
+
+                   </div><!--col-md-6 Finish --->
+
+                 </div><!--form-group Finish --->
+
+
+                 <div class="form-group"><!--form-group Begin --->
+
+                   <label class="col-md-3 control-label"> Product Keywords</label>
+
+                   <div class="col-md-6"><!--col-md-6 Begin --->
+
+                      <input name="Prod_keywords" type="text" class="form-control" required>
+
+                   </div><!--col-md-6 Finish --->
+
+                 </div><!--form-group Finish --->
+
+
+                 <div class="form-group"><!--form-group Begin --->
+
+                   <label class="col-md-3 control-label"> Product Desc</label>
+
+                   <div class="col-md-6"><!--col-md-6 Begin --->
+
+                      <textarea name="Prod_desc" cols="19" rows="6" class="form-control"></textarea>
+
+                   </div><!--col-md-6 Finish --->
+
+                 </div><!--form-group Finish --->
+
+
+                 <div class="form-group"><!--form-group Begin --->
+
+                   <label class="col-md-3 control-label"></label>
+
+                   <div class="col-md-6"><!--col-md-6 Begin --->
+
+                      <input name="submit" value="Insert Product" type="submit" class="btn btn-primary form-control">
+
+                   </div><!--col-md-6 Finish --->
+
+                 </div><!--form-group Finish --->
+
+
+             </form><!--form-horizontal Finish --->
+
+           </div><!--panel-body Finish --->
+
+       </div><!--panel panel-default Finish --->
+
+  </div><!-- col-lg-12 Finish --->
+
+</div><!-- row Finish  --->
+
+          <script src="js/tinymce/tinymce.min.js"></script>
+          <script>tinymce.init({ selector:'textarea'});</script>
+  </body>
+</html>
+
+<?php
+
+if(isset($_POST['submit'])){
+
+    $Prod_Title = $_POST['Prod_Title'];
+    $product_cat = $_POST['product_cat'];
+    $cat = $_POST['cat'];
+    $Prod_price = $_POST['Prod_price'];
+    $Prod_keywords = $_POST['Prod_keywords'];
+    $Prod_desc = $_POST['Prod_desc'];
+
+    $product_img1 = $_FILES['product_img1']['name'];
+    $product_img2 = $_FILES['product_img2']['name'];
+    $product_img3 = $_FILES['product_img3']['name'];
+
+    $temp_name1 = $_FILES['product_img1']['tmp_name'];
+    $temp_name2 = $_FILES['product_img2']['tmp_name'];
+    $temp_name3 = $_FILES['product_img3']['tmp_name'];
+
+    move_uploaded_file($temp_name1,"product_images/$product_img1");
+    move_uploaded_file($temp_name2,"product_images/$product_img2");
+    move_uploaded_file($temp_name3,"product_images/$product_img3");
+
+    $insert_product = "insert into products (Prod_cat_id,Cat_id,date,Prod_Title,Prod_img1,Prod_img2,Prod_img3,Prod_price,Prod_keywords,Prod_desc)
+     values ('$product_cat','$cat',NOW(),'$Prod_Title','$product_img1','$product_img2','$product_img3','$Prod_price','$Prod_keywords','$Prod_desc')";
+
+     $run_product = mysqli_query($con,$insert_product);
+
+     if($run_product){
+       echo "<script>alert('Product has been inserted successfully')</script>";
+       echo "<script>window.open('index.php?view_products','_self')</script>";
+     }
+}
+ ?>
+
+<?php } ?>
